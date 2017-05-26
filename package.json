@@ -1,0 +1,24 @@
+{
+  "name": "ytucetrackbot",
+  "version": "1.0.0",
+  "description": "Ytuce Track Bot in Telegram",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "node-telegram-bot-api": "^0.27.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pleycpl/YtuceTrackBot.git"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/pleycpl/YtuceTrackBot/issues"
+  },
+  "homepage": "https://github.com/pleycpl/YtuceTrackBot#readme"
+}
