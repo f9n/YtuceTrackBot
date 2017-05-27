@@ -6,7 +6,7 @@ from pymongo import MongoClient
 print('[+] Program Started')
 client = MongoClient('mongodb://localhost:27017')
 db = client['ytucetrackbot'] # which database
-crawler = db.crawler  # which collection
+crawlers = db.crawlers  # which collection
 
 url = 'https://ytuce.maliayas.com/'
 r  = requests.get(url)
@@ -29,9 +29,9 @@ for item in soup.find_all('div', 'item'):
         'clock': time.group(2),
         'status': 'new'
     }
-    result = crawler.find_one({'id': id})
+    result = crawlers.find_one({'id': id})
     if not result:
         print('New Link')
-        crawler.insert_one(data)
+        crawlers.insert_one(data)
 
 print('[+] Program Finished')
