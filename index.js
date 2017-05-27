@@ -47,14 +47,15 @@ bot.onText(/\/listsite/, (msg, match) => {
 bot.onText(/\/setsite (.+)/, (msg, match) => {
   console.log('[+] Runned /setsite')
   let fromId = msg.from.id
-  console.log(match[1])
-  if (match[1] in sites) {
+  let tracksite = match[1]
+  console.log(tracksite)
+  if (sites.indexOf(tracksite) >= 0) {
     User.find({id: fromId}, (err, user) => {
       if (err) throw err
       if (user.length === 0) {
         bot.sendMessage(fromId, 'User doesnt exists')
       } else {
-        User.findOneAndUpdate({id: fromId}, {trackSite: match[1]}, (err) => {
+        User.findOneAndUpdate({id: fromId}, {trackSite: tracksite}, (err) => {
           if (err) throw err
           bot.sendMessage(fromId, 'Updated trackSite field')
         })
@@ -78,11 +79,12 @@ bot.onText(/\/help/, (msg, match) => {
   bot.sendMessage(fromId, message)
 })
 
+/*
 bot.on('message', (msg) => {
   const chatId = msg.chat.id
   bot.sendMessage(chatId, 'Received your message')
 })
-
+*/
 /*
 setInterval(function () {
   console.log('[+] Runned setInterval function again')
