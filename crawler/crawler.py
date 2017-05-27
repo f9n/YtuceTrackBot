@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 import hashlib
 from pymongo import MongoClient
-print('[+] Program Started')
+print('[+] Python Crawler Program Started')
 client = MongoClient('mongodb://localhost:27017')
 db = client['ytucetrackbot'] # which database
 crawlers = db.crawlers  # which collection
@@ -34,4 +34,4 @@ for item in soup.find_all('div', 'item'):
         print('New Link')
         crawlers.insert_one(data)
 
-print('[+] Program Finished')
+print('[+] Python Crawler Program Finished')

@@ -8,7 +8,7 @@ mongoose.connect(process.env.MongoDbUri || process.env.MongoDbUrl || 'mongodb://
 
 var sites = ['ytuce']
 const bot = new TelegramBot(token, {polling: true})
-
+console.log('[+] Nodejs Bot Program Started')
 // Matches /createuser [whatever]
 bot.onText(/\/createuser/, (msg, match) => {
   var fromId = msg.from.id
