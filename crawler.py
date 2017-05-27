@@ -2,6 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import hashlib
+from pymongo import MongoClient
+client = MongoClient('mongodb://localhost:27017')
+db = client['ytucetrackbot'] # which database
+crawler = db.crawler  # which collection
+
 url = 'https://ytuce.maliayas.com/'
 r  = requests.get(url)
 soup = BeautifulSoup(r.text, 'html.parser')
@@ -24,3 +29,4 @@ for item in soup.find_all('div', 'item'):
         'status': 'new'
     }
     print(data)
+    crawler.insert_one(data)
