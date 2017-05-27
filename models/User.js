@@ -8,7 +8,8 @@ var userSchema = new Schema({
   firstname: String,
   lastname: String,
   trackSite: String,
-  notification: String
+  notification: String,
+  createdAt: String
 })
 
 userSchema.methods.addTrackSite = function (site) {

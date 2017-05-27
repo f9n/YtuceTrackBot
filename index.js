@@ -19,7 +19,8 @@ bot.onText(/\/createuser/, (msg, match) => {
         id: msg.from.id,
         username: msg.from.username,
         firstname: msg.from.first_name,
-        lastname: msg.from.last_name
+        lastname: msg.from.last_name,
+        createdAt: Date.now()
       })
       newUser.save((err) => {
         if (err) throw err
