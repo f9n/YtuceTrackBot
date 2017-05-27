@@ -8,7 +8,6 @@ var userSchema = new Schema({
   firstname: String,
   lastname: String,
   trackSite: String,
-  notification: String,
   createdAt: String
 })
 
