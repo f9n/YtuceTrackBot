@@ -1,5 +1,8 @@
 # YtuceTrackBot
-Ytuce Track Bot in Telegram
+ 
+ Moved to => https://github.com/UniversityCeNotification
+ 
+ Ytuce Track Bot in Telegram
 
  TelegramApp  <------> TelegramBot <-----> Server <------> MongoDb <------> Crawler
 
