@@ -34,6 +34,16 @@ bot.onText(/\/createuser/, (msg, match) => {
   })
 })
 
+bot.onText(/\/listsite/, (msg, match) => {
+  console.log('[+] Runned listsite command')
+  let fromId = msg.from.id
+  let message = ''
+  sites.forEach((site) => {
+    message = message + site + '\n'
+  })
+  bot.sendMessage(fromId, message)
+})
+
 bot.onText(/\/setsite (.+)/, (msg, match) => {
   console.log('[+] Runned /setsite')
   let fromId = msg.from.id
