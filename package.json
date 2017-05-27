@@ -4,9 +4,11 @@
   "description": "Ytuce Track Bot in Telegram",
   "main": "index.js",
   "dependencies": {
+    "cheerio": "^0.22.0",
     "dotenv": "^4.0.0",
     "mongoose": "^4.10.2",
-    "node-telegram-bot-api": "^0.27.1"
+    "node-telegram-bot-api": "^0.27.1",
+    "request": "^2.81.0"
   },
   "devDependencies": {},
   "scripts": {
