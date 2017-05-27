@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const TelegramBot = require('node-telegram-bot-api')
 const token = process.env.TelegramToken
 const User = require('./models/User')
-mongoose.connect(process.env.MongoDbUri || process.env.MongoDbUrl || 'mongodb://localhost/ytutrackbot')
+mongoose.connect(process.env.MongoDbUri || process.env.MongoDbUrl || 'mongodb://localhost/ytucetrackbot')
 
 var sites = ['ytuce']
 const bot = new TelegramBot(token, {polling: true})
