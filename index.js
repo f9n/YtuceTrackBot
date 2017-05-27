@@ -65,6 +65,19 @@ bot.onText(/\/setsite (.+)/, (msg, match) => {
   }
 })
 
+bot.onText(/\/help/, (msg, match) => {
+  let fromId = msg.from.id
+  let message = `
+  # CommandList
+  /createuser  -> Creating User
+  /setsite <yoursite>  -> Seting your track site
+  /listsite -> Listing available track sites
+  /help -> Help me!
+  First createuser and then setsite, after that notification start
+  `
+  bot.sendMessage(fromId, message)
+})
+
 bot.on('message', (msg) => {
   const chatId = msg.chat.id
   bot.sendMessage(chatId, 'Received your message')
