@@ -5,6 +5,7 @@ const token = process.env.TelegramToken
 const User = require('./models/User')
 mongoose.connect(process.env.MongoDbUri || process.env.MongoDbUrl || 'mongodb://localhost/ytutrackbot')
 
+var sites = ['ytuce']
 const bot = new TelegramBot(token, {polling: true})
 
 // Matches /createuser [whatever]
@@ -34,20 +35,24 @@ bot.onText(/\/createuser/, (msg, match) => {
 })
 
 bot.onText(/\/setsite (.+)/, (msg, match) => {
-  var fromId = msg.from.id
-  console.log('Runned /setsite')
+  console.log('[+] Runned /setsite')
+  let fromId = msg.from.id
   console.log(match[1])
-  User.find({id: fromId}, (err, user) => {
-    if (err) throw err
-    if (user.length === 0) {
-      bot.sendMessage(fromId, 'User doesnt exists')
-    } else {
-      User.findOneAndUpdate({id: fromId}, {trackSite: match[1]}, (err) => {
-        if (err) throw err
-        bot.sendMessage(fromId, 'Updated trackSite field')
-      })
-    }
-  })
+  if (match[1] in sites) {
+    User.find({id: fromId}, (err, user) => {
+      if (err) throw err
+      if (user.length === 0) {
+        bot.sendMessage(fromId, 'User doesnt exists')
+      } else {
+        User.findOneAndUpdate({id: fromId}, {trackSite: match[1]}, (err) => {
+          if (err) throw err
+          bot.sendMessage(fromId, 'Updated trackSite field')
+        })
+      }
+    })
+  } else {
+    bot.sendMessage(fromId, 'Please select site in listsite')
+  }
 })
 
 bot.on('message', (msg) => {
