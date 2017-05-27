@@ -32,6 +32,23 @@ bot.onText(/\/createuser/, (msg, match) => {
   })
 })
 
+bot.onText(/\/setsite (.+)/, (msg, match) => {
+  var fromId = msg.from.id
+  console.log('Runned /setsite')
+  console.log(match[1])
+  User.find({id: fromId}, (err, user) => {
+    if (err) throw err
+    if (user.length === 0) {
+      bot.sendMessage(fromId, 'User doesnt exists')
+    } else {
+      User.findOneAndUpdate({id: fromId}, {trackSite: match[1]}, (err) => {
+        if (err) throw err
+        bot.sendMessage(fromId, 'Updated trackSite field')
+      })
+    }
+  })
+})
+
 bot.on('message', (msg) => {
   const chatId = msg.chat.id
   bot.sendMessage(chatId, 'Received your message')
