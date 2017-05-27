@@ -28,5 +28,7 @@ for item in soup.find_all('div', 'item'):
         'clock': time.group(2),
         'status': 'new'
     }
-    print(data)
-    crawler.insert_one(data)
+    result = crawler.find_one({'id': id})
+    if not result:
+        print('Not result')
+        crawler.insert_one(data)
